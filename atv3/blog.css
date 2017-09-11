@@ -1,0 +1,85 @@
+body{
+    background-image:url(gradient_bg.png);
+    -webkit-background-size: cover;
+    background-color: #cbcad0
+}
+header{
+    
+    background-color: #ad1010;
+    text-align: center;
+    
+}
+h1{
+    margin: 10px;
+    color:white;
+    font-family: helvetica;
+
+}
+
+h3{
+    content: 100%;
+    text-align: center;
+    margin: 0px;
+    height: 40px;
+    color: beige;
+    font-family: verdana;
+    background-color: #910a0a
+}
+
+nav{
+    margin: 0px;
+    text-align: center;
+    background-color: #770e0e;
+    font-family: sans-serif;
+    font-size: 13px;
+}
+
+article{
+    border: 2px solid #767676;
+    margin: 5px;
+    padding: 10px;
+    align-content: center;
+    text-align: center;
+    
+    
+    background-color: #9091a3;
+}
+
+h2{
+    border: 1.5px dashed white;
+    color:#e6e4e4;
+    font-size: 3vw;
+    background-color: #4b4855;
+    height: 3.6vw;
+    margin-bottom: 20px;
+    
+}
+
+#para{
+    border: none;
+    margin-left:17%;
+    margin-right: 20%
+    text-align: justify;
+    width: 60vw;
+    background-color: #c0bdd3;
+}
+
+video{
+    width: 50vm;
+    height: 28vw;
+}
+
+audio{
+    width: 50vw;
+    
+}
+
+#contato{
+    text-align: left;
+}
+
+footer{
+    height: 25px;
+    text-align: center;
+    background-color: #171717;
+}

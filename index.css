@@ -81,3 +81,17 @@ p {
     margin-right: 1px;
     font-size: 30px;
 }
+
+#para3{
+    text-align: center;
+    background-color: #fca500;
+    width: 150px;
+    height: 60px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #4a7617;
+    border-radius: 200px;
+    margin-left: 170px;
+    margin-top: 0px;
+    transition: 0.2s ease-in;
+}

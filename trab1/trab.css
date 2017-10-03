@@ -1,0 +1,174 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.item{
+    position: relative;
+    display: inline-block;
+    transition-duration: 0.3s;
+}
+
+.h ul{
+    text-align: center;
+    list-style-type: none;
+    width: 600px;
+    background-color: #009DFF;
+}
+
+.item li a{
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 150px;
+    padding: 10px;
+}
+
+.conteudo{
+    max-height: 0px;
+    background-color: grey;
+    top: 100%;
+    width: 250px;
+    position: absolute;
+    z-index: 1;
+    transition: 0.5s;
+    
+}
+
+.item:hover{
+    background-color: #145ABF;
+    
+}
+
+.item:hover .conteudo{
+    max-height: 200px;
+}
+
+.item:hover .conteudo a{
+    display: block;
+}
+
+.conteudo a{
+    display: none;
+    
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    transition-duration: 0.3s;
+}
+
+.conteudo a:hover{
+    transform: scale(1.015);
+    background-color: black;
+}
+
+.oi{
+    width: 600px;
+    text-align: center;
+    background: linear-gradient(#5DC0FE,rgba(0, 0, 255, 0.00));
+    height: 200px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 15px;
+    
+}
+
+.ch li a{
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    color: #13557E;
+    font-family:sans-serif;
+}
+
+.ch a:hover{
+    background-color:#13557E; 
+    color:white;
+}
+
+
+
+.oi2{
+    position: absolute;
+    bottom: 0;
+    width: 600px;
+    color: #13557E;
+    font-family: sans-serif;
+    text-align: center;
+    
+    background: linear-gradient(rgba(255, 255, 255, 0.00),#5DC0FE);
+}
+
+.oi2 ul{
+    list-style-type: none;
+}
+
+.ch2 li a{
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color:#13557E;
+
+}
+
+.ch2 li a:hover{
+    background-color: #13557E;
+    color: white;
+}
+
+img{
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    animation-name: vai;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: 0.3s;
+}
+
+
+@keyframes vai{
+    0%   {left:120px; top:350px;}
+  25%  { left:270px; top:350px;}
+  50%  { left:270px; top:250px;}
+  75%  { left:120px; top:250px;}
+  100% { left:120px; top:350px;}
+}
+
+img:hover{
+    transform: scale(1.1);
+}
+
+@media screen and (min-width:600px) {
+    .h ul{
+        width: 100%;
+    }
+
+    .oi{
+        position: absolute;
+        width: 20%;
+        float: left;
+        display: inline-block;
+    }
+
+    .oi2{
+        width: 20%;
+        left: 80%;
+        top:37px;
+        height: 90%;
+        float: right;
+        display: inline-block;
+        background: linear-gradient(#5DC0FE,rgba(255, 255, 255, 0.00));
+    }
+
+
+    @keyframes vai{
+        0%   {left:420px; top:250px;}
+      25%  { left:670px; top:250px;}
+      50%  { left:670px; top:150px;}
+      75%  { left:420px; top:150px;}
+      100% { left:420px; top:250px;}
+    }
+    
+}

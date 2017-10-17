@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="1.css">
+</head>
+<body>
+    
+    <header>
+        <div class="oi">
+            <h1>Página</h1>
+        </div>
+    </header>
+
+<button id="but" class="bu" >&#9776</button>
+
+
+    <div id="zim" class="v-vem">
+        <ul>
+            <div class="item">
+                <li><a href="">Link</a></li>
+            </div>
+            <div class="item">
+                <li><a href="">Link</a></li>
+            </div>
+            <div class="item">
+                <li><a href="">Link</a></li>
+            </div>
+        </ul>
+    </div>
+
+
+
+    <script>
+        let vert = document.getElementById("zim");
+        let botao = document.getElementById("but");
+        let n=1;
+    
+        
+
+
+        botao.addEventListener("click", function(){
+            if(n==0){
+                vert.classList.remove("v");
+                vert.classList.add("v-vem");
+                n=1;
+            }
+            else if(n==1){
+                vert.classList.remove("v-vem");
+                vert.classList.add("v");
+                n=0;
+            }
+            console.log(n);
+                
+
+        });
+
+
+
+        
+
+
+
+    </script>
+    
+
+</body>
+</html>

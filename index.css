@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     background-color: #77a736;
 }
@@ -94,4 +95,102 @@ p {
     margin-left: 170px;
     margin-top: 0px;
     transition: 0.2s ease-in;
+=======
+body {
+    background-color: #77a736;
+}
+
+#para {
+    text-align: center;
+    background-color: #fca500;
+    width: 80px;
+    height: 60px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #4a7617;
+    border-radius: 200px;
+    margin-left: 200px;
+    margin-top: 0px;
+    transition: 0.2s ease-in;
+}
+
+#para2 {
+    text-align: center;
+    background-color: #3c0c0c;
+    width: 110px;
+    height: 65px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #d03232;
+    border-radius: 200px;
+    margin-left: 190px;
+    transition: 0.3s ease-in;
+}
+
+#para:hover {
+    color: aliceblue;
+    transform: scale(1.1);
+    background: #fcfc00;
+}
+
+#para2:hover {
+    color: aliceblue;
+    transform: scale(1.1);
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Baloo Tammudu', cursive;
+    color: #ff2525;
+    margin-left: 125px;
+    border-color: #42670f;
+    border-style: solid;
+    border-width: 4px;
+    background-color: #b9e359;
+    border-radius: 25px;
+    width: 250px;
+    margin-bottom: 40px
+}
+
+#oi {
+    margin-left: 235px;
+    background-color: #b6ba47;
+    width: 15px;
+    height: 65px;
+    margin-bottom: 0px;
+}
+
+#oi2 {
+    margin-left: 235px;
+    background-color: #dd7037;
+    width: 15px;
+    height: 65px;
+    margin-bottom: 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+p {
+    font-family: 'Baloo Tammudu', cursive;
+    color: red;
+    margin-top: 3px;
+    margin-right: 1px;
+    font-size: 30px;
+}
+
+#para3{
+    text-align: center;
+    background-color: #fca500;
+    width: 150px;
+    height: 60px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #4a7617;
+    border-radius: 200px;
+    margin-left: 170px;
+    margin-top: 0px;
+    transition: 0.2s ease-in;
+>>>>>>> e22993a36d810661dad0cb9956fc653676eb9554
 }

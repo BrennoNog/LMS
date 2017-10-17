@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin: 0px;
     padding: 0px;
@@ -40,4 +41,48 @@ div:hover{
 
 .oi7{
     background-color: #c400ff;
+=======
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+div{
+    
+    height: 95px;
+    width: 150px;
+    transition: 0.3s;
+}
+
+div:hover{
+    width: 100%;
+}
+
+.oi{
+    background-color: #ff0000;
+}
+
+.oi2{
+    background-color: #ff7600;
+}
+
+.oi3{
+    background-color: #ebff00;
+}
+
+.oi4{
+    background-color: #27ff00;
+}
+
+.oi5{
+    background-color: #00baff;
+}
+
+.oi6{
+    background-color: #001dff;
+}
+
+.oi7{
+    background-color: #c400ff;
+>>>>>>> e22993a36d810661dad0cb9956fc653676eb9554
 }

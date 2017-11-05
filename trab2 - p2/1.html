@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="2.css">
+</head>
+<body>
+   
+
+    <div class="meio">
+        <header>
+            <span>Olá</span>
+            <div class="entrar"><a href="">Entrar</a></div>
+        </header>
+
+        <div class="amigos">
+            <ul class="u" id="oi">
+                
+            </ul>
+        </div>
+        
+
+        <div class="mensagens" id="mens">
+            
+
+        </div>
+    </div>
+    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>  
+    <script>
+
+    //add amigos
+
+    function add(nome,id){
+        let divv = document.getElementById("oi");
+        let li = document.createElement("li");
+        let icon1 = document.createElement("IMG");
+        icon1.src = "icon.png";
+        let txt = document.createTextNode(nome);
+        li.id = id; //pondo id
+        li.appendChild(icon1);
+        li.appendChild(txt);
+        divv.appendChild(li);
+        console.log(divv);
+        
+    
+    }
+
+    function add_mensagem(user,mensagem){
+        let divv = document.getElementById("mensagem"); 
+        
+
+        let m1 = document.createElement("div");
+        m1.className = "conteudo-mensagem";
+
+        let s1 = document.createElement("span");
+        s1.className = "usuario";
+        s1_text = document.createTextNode(user);
+        s1.appendChild(s1_text);
+
+        let p1 = document.createElement("p");
+        p1.className = ("texto");
+        let p1_text = document.createTextNode(mensagem);
+        p1.appendChild(p1_text);
+
+        let balao = document.createElement("div");
+        balao.className = "balao";
+
+        balao.appendChild(s1);
+        balao.appendChild(p1);
+        m1.appendChild(balao);
+        console.log(divv);
+        divv.appendChild(m1);
+    }
+    
+    let ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function(){
+        if(ajax.readyState == 4){
+            var obj = JSON.parse(ajax.responseText);
+            console.log(obj);
+            for(let i = 0; i<obj.length; i++){
+                console.log("entrei");
+                console.log(obj[i].grupo_nome);
+                add(obj[i].grupo_nome, obj[i].grupo_id);
+                } 
+            }
+                
+        }
+    
+    
+        ajax.open("GET",'http://rest.learncode.academy/api/brenno3/groups',false);
+        ajax.send();
+    
+    //----------------------------------------------------------------------------------------------//
+    //aparecer nome grande da família
+
+    let familia = document.getElementById(1);
+    
+    if (familia !=null) {
+        familia.addEventListener("click", function(){
+        document.getElementById("mens").innerHTML = "";
+
+        let msg = document.getElementById("mens");
+
+        let divv = document.createElement("div");
+        divv.className = "mensagem";
+        divv.id = "mensagem";
+
+        let divv2 = document.createElement("div");
+        divv2.className = "conv";
+        let aj = document.createElement("a");
+        let text = document.createTextNode("Grupo da Família");
+
+        aj.appendChild(text);
+        divv2.appendChild(aj);
+        divv.appendChild(divv2);
+        mens.appendChild(divv);
+
+        //-------------------------------------------------------------
+        // mensagens
+
+        let ajax2 = new XMLHttpRequest();
+        ajax2.onreadystatechange = function(){
+        if(ajax2.readyState == 4){
+            var obj = JSON.parse(ajax2.responseText);
+            console.log(obj);
+            for(let i = 0; i<obj.length; i++){
+                console.log("entrei mens");
+                console.log(obj[i].user);
+                add_mensagem(obj[i].user, obj[i].mensagem);
+                } 
+            }
+                
+        }
+    
+        ajax2.open("GET",'http://rest.learncode.academy/api/brenno2/grupofamilia',false);
+        ajax2.send();
+    
+    });
+}
+//------------------------------------------------------------------------
+//aparecer nome grande do trabalho
+
+let trabalho = document.getElementById("Trabalho");
+    
+if (trabalho !=null) {
+        trabalho.addEventListener("click", function(){
+        document.getElementById("mens").innerHTML = "";
+
+        let msg = document.getElementById("mens");
+
+        let divv = document.createElement("div");
+        divv.className = "mensagem";
+        divv.id = "mensagem";
+
+        let divv2 = document.createElement("div");
+        divv2.className = "conv";
+        let aj = document.createElement("a");
+        let text = document.createTextNode("Grupo do Trabalho");
+
+        aj.appendChild(text);
+        divv2.appendChild(aj);
+        divv.appendChild(divv2);
+        mens.appendChild(divv);
+
+//--------------------------------------------------------
+// mensagens
+        let ajax2 = new XMLHttpRequest();
+        ajax2.onreadystatechange = function(){
+        if(ajax2.readyState == 4){
+            var obj = JSON.parse(ajax2.responseText);
+            console.log(obj);
+            for(let i = 0; i<obj.length; i++){
+                console.log("entrei trab");
+                console.log(obj[i].user);
+                add_mensagem(obj[i].user, obj[i].mensagem);
+                } 
+            }
+                
+        }
+    
+        ajax2.open("GET",'http://rest.learncode.academy/api/brenno2/grupotrabalho',false);
+        ajax2.send();
+    });
+    
+    }
+
+    
+
+
+
+
+    </script>
+
+
+</body>
+</html>

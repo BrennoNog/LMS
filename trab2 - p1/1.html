@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="2.css">
+</head>
+<body>
+   
+
+    <div class="meio">
+        <header>
+            <span>Olá</span>
+            <div class="entrar"><a href="">Entrar</a></div>
+        </header>
+
+        <div class="amigos">
+            <ul class="u" id="oi">
+                
+            </ul>
+        </div>
+        
+
+        <div class="mensagens" id="mens">
+            
+
+        </div>
+    </div>
+
+    <script>
+
+    //add amigos
+
+    let icon1 = document.createElement("IMG");
+    icon1.src = "icon.png";
+
+    let li_j = document.createElement("li");
+    li_j.id = "joao";
+    var nome1 = document.createTextNode("João03");
+    li_j.appendChild(icon1);
+    li_j.appendChild(nome1);
+
+    let icon2 = document.createElement("IMG");
+    icon2.src = "icon.png";
+
+    let li_m = document.createElement("li");
+    li_m.id = "maria";
+    var nome2 = document.createTextNode("Maria2000");
+    li_m.appendChild(icon2);
+    li_m.appendChild(nome2);
+
+    let icon3 = document.createElement("IMG");
+    icon3.src = "icon.png";
+
+    let li_r = document.createElement("li");
+    li_r.id = "robson";
+    var nome3 = document.createTextNode("robson_alves");
+    li_r.appendChild(icon3);
+    li_r.appendChild(nome3);
+
+
+
+    let d = document.getElementById("oi");
+    
+    d.appendChild(li_j);
+    d.appendChild(li_m);
+    d.appendChild(li_r);
+
+    //----------------------------------------------------------------------------------------------//
+    //aparecer mensagens
+
+    let joao = document.getElementById("joao");
+    
+
+    joao.addEventListener("click", function(){
+
+        //NOME DO JOAO ----------------------------------------------
+
+        document.getElementById("mens").innerHTML = "";
+
+        let msg = document.getElementById("mens");
+
+        let divv = document.createElement("div");
+        divv.className = "mensagem";
+
+        
+
+        let divv2 = document.createElement("div");
+        divv2.className = "conv";
+        let aj = document.createElement("a");
+        let text = document.createTextNode("João03");
+
+        aj.appendChild(text);
+        divv2.appendChild(aj);
+        divv.appendChild(divv2);
+        mens.appendChild(divv);
+
+        //---------------------------------------------------------
+
+        let m1 = document.createElement("div");
+        m1.className = "conteudo-mensagem";
+
+        let s1 = document.createElement("span");
+        s1.className = "usuario";
+        s1_text = document.createTextNode("João03:");
+        s1.appendChild(s1_text);
+
+
+        let p1 = document.createElement("p");
+        p1.className = ("texto");
+        let p1_text = document.createTextNode("tudo bem?");
+        p1.appendChild(p1_text)
+
+        let balao = document.createElement("div");
+        balao.className = "balao";
+
+        balao.appendChild(s1);
+        balao.appendChild(p1);
+        m1.appendChild(balao);
+        divv.appendChild(m1);
+
+        // pondo balao 1-----------------------------------------------------
+
+        let m2 = document.createElement("div");
+        m2.className = "conteudo-mensagem";
+
+        let s2 = document.createElement("span");
+        s2.className = "usuario";
+        s2_text = document.createTextNode("victor23:");
+        s2.appendChild(s2_text);
+
+
+        let p2 = document.createElement("p");
+        p2.className = ("texto");
+        let p2_text = document.createTextNode("tudo tranqs");
+        p2.appendChild(p2_text)
+
+        let balao2 = document.createElement("div");
+        balao2.className = "balao";
+
+        balao2.appendChild(s2);
+        balao2.appendChild(p2);
+        m2.appendChild(balao2);
+        divv.appendChild(m2);
+
+        // pondo balao 2 -----------------------------------------------
+
+        let m3 = document.createElement("div");
+        m3.className = "conteudo-mensagem";
+
+        let s3 = document.createElement("span");
+        s3.className = "usuario";
+        s3_text = document.createTextNode("João03:");
+        s3.appendChild(s3_text);
+
+
+        let p3 = document.createElement("p");
+        p3.className = ("texto");
+        let p3_text = document.createTextNode("que bom");
+        p3.appendChild(p3_text)
+
+        let balao3 = document.createElement("div");
+        balao3.className = "balao";
+
+        balao3.appendChild(s3);
+        balao3.appendChild(p3);
+        m3.appendChild(balao3);
+        divv.appendChild(m3);
+
+        // pondo balao 3 -----------------------------------------------
+
+    });
+    
+    let maria = document.getElementById("maria");
+    
+
+    maria.addEventListener("click", function(){
+
+        //NOME DA MARIA ----------------------------------------------
+
+        document.getElementById("mens").innerHTML = "";
+
+        let msg = document.getElementById("mens");
+
+        let divv = document.createElement("div");
+        divv.className = "mensagem";
+
+        let divv2 = document.createElement("div");
+        divv2.className = "conv";
+        let aj = document.createElement("a");
+        let text = document.createTextNode("maria2000");
+
+        aj.appendChild(text);
+        divv2.appendChild(aj);
+        divv.appendChild(divv2);
+        mens.appendChild(divv);
+
+        //---------------------------------------------------------
+
+        let m1 = document.createElement("div");
+        m1.className = "conteudo-mensagem";
+
+        let s1 = document.createElement("span");
+        s1.className = "usuario";
+        s1_text = document.createTextNode("maria2000:");
+        s1.appendChild(s1_text);
+
+
+        let p1 = document.createElement("p");
+        p1.className = ("texto");
+        let p1_text = document.createTextNode("na paz?");
+        p1.appendChild(p1_text)
+
+        let balao = document.createElement("div");
+        balao.className = "balao";
+
+        balao.appendChild(s1);
+        balao.appendChild(p1);
+        m1.appendChild(balao);
+        divv.appendChild(m1);
+
+        // pondo balao 1-----------------------------------------------------
+
+        let m2 = document.createElement("div");
+        m2.className = "conteudo-mensagem";
+
+        let s2 = document.createElement("span");
+        s2.className = "usuario";
+        s2_text = document.createTextNode("victor23:");
+        s2.appendChild(s2_text);
+
+
+        let p2 = document.createElement("p");
+        p2.className = ("texto");
+        let p2_text = document.createTextNode("show");
+        p2.appendChild(p2_text)
+
+        let balao2 = document.createElement("div");
+        balao2.className = "balao";
+
+        balao2.appendChild(s2);
+        balao2.appendChild(p2);
+        m2.appendChild(balao2);
+        divv.appendChild(m2);
+
+        // pondo balao 2 -----------------------------------------------
+
+        let m3 = document.createElement("div");
+        m3.className = "conteudo-mensagem";
+
+        let s3 = document.createElement("span");
+        s3.className = "usuario";
+        s3_text = document.createTextNode("maria2000:");
+        s3.appendChild(s3_text);
+
+
+        let p3 = document.createElement("p");
+        p3.className = ("texto");
+        let p3_text = document.createTextNode("que bom");
+        p3.appendChild(p3_text)
+
+        let balao3 = document.createElement("div");
+        balao3.className = "balao";
+
+        balao3.appendChild(s3);
+        balao3.appendChild(p3);
+        m3.appendChild(balao3);
+        divv.appendChild(m3);
+
+        // pondo balao 3 -----------------------------------------------
+
+    });
+
+    let robson = document.getElementById("robson");
+    
+
+    robson.addEventListener("click", function(){
+
+        //NOME DA ROBSON ----------------------------------------------
+
+        document.getElementById("mens").innerHTML = "";
+
+        let msg = document.getElementById("mens");
+
+        let divv = document.createElement("div");
+        divv.className = "mensagem";
+
+        let divv2 = document.createElement("div");
+        divv2.className = "conv";
+        let aj = document.createElement("a");
+        let text = document.createTextNode("robson_alves");
+
+        aj.appendChild(text);
+        divv2.appendChild(aj);
+        divv.appendChild(divv2);
+        mens.appendChild(divv);
+
+        //---------------------------------------------------------
+
+        let m1 = document.createElement("div");
+        m1.className = "conteudo-mensagem";
+
+        let s1 = document.createElement("span");
+        s1.className = "usuario";
+        s1_text = document.createTextNode("victor23:");
+        s1.appendChild(s1_text);
+
+
+        let p1 = document.createElement("p");
+        p1.className = ("texto");
+        let p1_text = document.createTextNode("bom?");
+        p1.appendChild(p1_text)
+
+        let balao = document.createElement("div");
+        balao.className = "balao";
+
+        balao.appendChild(s1);
+        balao.appendChild(p1);
+        m1.appendChild(balao);
+        divv.appendChild(m1);
+
+        // pondo balao 1-----------------------------------------------------
+
+        let m2 = document.createElement("div");
+        m2.className = "conteudo-mensagem";
+
+        let s2 = document.createElement("span");
+        s2.className = "usuario";
+        s2_text = document.createTextNode("robson_alves:");
+        s2.appendChild(s2_text);
+
+
+        let p2 = document.createElement("p");
+        p2.className = ("texto");
+        let p2_text = document.createTextNode("bom");
+        p2.appendChild(p2_text)
+
+        let balao2 = document.createElement("div");
+        balao2.className = "balao";
+
+        balao2.appendChild(s2);
+        balao2.appendChild(p2);
+        m2.appendChild(balao2);
+        divv.appendChild(m2);
+
+        // pondo balao 2 -----------------------------------------------
+
+        let m3 = document.createElement("div");
+        m3.className = "conteudo-mensagem";
+
+        let s3 = document.createElement("span");
+        s3.className = "usuario";
+        s3_text = document.createTextNode("victor23:");
+        s3.appendChild(s3_text);
+
+
+        let p3 = document.createElement("p");
+        p3.className = ("texto");
+        let p3_text = document.createTextNode("que bom");
+        p3.appendChild(p3_text)
+
+        let balao3 = document.createElement("div");
+        balao3.className = "balao";
+
+        balao3.appendChild(s3);
+        balao3.appendChild(p3);
+        m3.appendChild(balao3);
+        divv.appendChild(m3);
+
+        // pondo balao 3 -----------------------------------------------
+
+    });
+    
+
+
+    </script>
+
+
+</body>
+</html>

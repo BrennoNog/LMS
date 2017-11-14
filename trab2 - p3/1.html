@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="2.css">
+</head>
+<body>
+   
+
+    <div class="meio">
+        <header>
+            <span>Olá</span>
+            <div class="entrar"><a href="">Entrar</a></div>
+        </header>
+
+        
+        <div class="amigos">
+                <div class="add" id="add_grupo">
+                        <span>Add Grupo</span>
+    
+                        <div class="formulario" id="forma">
+                            <form action="">
+                                <span>Digite o nome do grupo: </span><input type="text" name="" id="nome"> <br> <br>
+                                <span>Digite o identificador do grupo: </span><input type="text" name="" id="ident"> <br> <br>
+                                <input type="submit" value="Criar" id="subm">
+                            </form>
+                        </div>
+                        
+                
+                    </div>
+            <ul class="u" id="oi">
+                
+            </ul>
+        </div>
+        
+
+        <div class="mensagens" id="mens">
+            
+
+        </div>
+        <div class="txt">
+            <form action="">
+                    <input type="text" class="inp" id="txt">
+                    <input type="submit" value="enviar" class="vai" id="sub">
+            </form>
+            
+        </div>
+    </div>
+    <script src="jquery-3.2.1.min.js" type="text/javascript"></script>  
+    <script>
+
+        let grupo_atual = "";
+
+//add grupo do servidor
+//---------------------------------------------------------------------------------------------------------------
+
+function add(nome,id){
+        let divv = document.getElementById("oi");
+        let li = document.createElement("li");
+        let icon1 = document.createElement("IMG");
+        icon1.src = "icon.png";
+        let txt = document.createTextNode(nome);
+        li.id = id; //pondo id
+        li.appendChild(icon1);
+        li.appendChild(txt);
+        divv.appendChild(li);
+
+        
+    
+    }
+
+    function nome_grande(nome){
+        document.getElementById("mens").innerHTML = "";
+
+        let msg = document.getElementById("mens");
+
+        let divv2 = document.createElement("div");
+        divv2.className = "conv";
+        let aj = document.createElement("a");
+        let text = document.createTextNode(nome);
+
+        aj.appendChild(text);
+        divv2.appendChild(aj);
+        mens.appendChild(divv2);
+    }
+
+    function add_mensagem(user,mensagem){
+        let divv = document.getElementById("mens"); 
+        
+
+        let m1 = document.createElement("div");
+        m1.className = "conteudo-mensagem";
+
+        let s1 = document.createElement("span");
+        s1.className = "usuario";
+        s1_text = document.createTextNode(user);
+        s1.appendChild(s1_text);
+
+        let p1 = document.createElement("p");
+        p1.className = ("texto");
+        let p1_text = document.createTextNode(mensagem);
+        p1.appendChild(p1_text);
+
+        let balao = document.createElement("div");
+        balao.className = "balao";
+
+        balao.appendChild(s1);
+        balao.appendChild(p1);
+        m1.appendChild(balao);
+        divv.appendChild(m1);
+    }
+
+    function pega(lid){
+
+        document.getElementById("mens").innerHTML = ""; 
+
+        let ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function(){
+        if(ajax.readyState == 4){
+            var obj = JSON.parse(ajax.responseText);
+            for(let i = 0; i<obj.length; i++){
+                add_mensagem(obj[i].user, obj[i].mensagem);
+                }
+        }
+        }
+
+        ajax.open("GET",'http://rest.learncode.academy/api/brenno5/'+lid,true);
+        ajax.send();
+
+    }
+
+
+        function add_grupo(){
+        let ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function(){
+        if(ajax.readyState == 4){
+            var obj = JSON.parse(ajax.responseText);
+            for(let i = 0; i<obj.length; i++){
+                add(obj[i].grupo_nome, obj[i].grupo_id);
+                }
+
+
+            let li = document.querySelectorAll("li");
+                for(i=0;i<li.length;i++){
+                        let liId = li[i].id;
+                    
+                        li[i].addEventListener("click", function(){
+                            event.preventDefault();
+                            console.log(liId);
+                            grupo_atual=liId;
+                            pega(liId);
+
+                        });
+
+                       
+                    }
+                }
+
+//aqui
+
+            }
+                
+        
+    
+    
+        ajax.open("GET",'http://rest.learncode.academy/api/brenno3/groups2',true);
+        ajax.send();
+        }
+
+    add_grupo();
+
+    //add grupo do servidor
+    //---------------------------------------------------------------------------------------------------------------
+    //botao de adicionar
+
+    let addgrupo = document.getElementById("add_grupo");
+
+    addgrupo.addEventListener("click", function(){ //fazendo form aparecer
+   
+        let form = document.getElementById("forma");
+
+        form.style.display = "block";
+    });
+
+    let subm = document.getElementById("subm");
+    let nome = document.getElementById("nome");
+    let id = document.getElementById("ident");
+
+    subm.addEventListener("click", function(){
+        event.preventDefault();
+
+        let form = document.getElementById("forma");
+        form.style.display = "none";
+
+        let ajax = new XMLHttpRequest();
+        let txt = nome.value;
+        let txt_id = id.value;
+        nome.value = "";
+        id.value = "";
+
+
+        let body = {grupo_nome: txt, grupo_id: txt_id }; // transforma o valor no formato do json
+
+            ajax.open('POST', 'http://rest.learncode.academy/api/brenno3/groups2', true);
+            ajax.setRequestHeader('content-type', 'application/json');
+            ajax.send(JSON.stringify(body));
+            
+            let divv = document.getElementById("oi");
+            divv.innerHTML="";
+
+            add_grupo();
+    });
+    //botao de adicionar
+    //-------------------------------------------------------------------------------------
+    //mandando mensagem
+    let botao = document.getElementById("sub");
+    
+
+    botao.addEventListener("click",function(){
+        let txt = document.getElementById("txt");
+
+        let ajax = new XMLHttpRequest();
+
+            console.log("apertou");
+            event.preventDefault();
+            let msg = txt.value; //pega valor da mensagem
+            let body = {user: "eu", mensagem: msg }; // transforma o valor no formato do json
+            
+            ajax.open('POST', 'http://rest.learncode.academy/api/brenno5/'+grupo_atual, true);
+            console.log(grupo_atual);
+            ajax.setRequestHeader('content-type', 'application/json');
+            ajax.send(JSON.stringify(body));
+            txt.value = "";
+                                    
+            pega(grupo_atual);
+    });
+
+    </script>
+
+
+</body>
+</html>

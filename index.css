@@ -54,13 +54,18 @@ a{
 }
 
 .t3{
-    font-size: 25px;
+    font-size: 20px;
     background-color:#1C00B3;
 }
 
 .t4{
-    font-size: 25px;
+    font-size: 20px;
     background-color:#170098;
+}
+
+.t5{
+    font-size: 25px;
+    background-color:#120076;
 }
 
 

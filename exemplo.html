@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="1.css">
+    <link rel="stylesheet" href="animate.css">
+</head>
+<body>
+
+<ul>
+    <div class="itens">
+            <li class="item">
+                    <img id="img1" class="animated slideInLeft" src="vectors/seta.svg" alt="">
+                </li>
+                <li class="item">
+                    <img id="img2" class="animated slideInLeft" src="vectors/trofeu.svg" alt="">
+                </li>
+                <li class="item">
+                    <img id="img3" class="animated slideInLeft" src="vectors/minhas_ideias.svg" alt="">
+                </li>
+                <li class="item">
+                    <img id="img4" class="animated slideInLeft" src="vectors/lupa-pesquisar-branco.svg" alt="">
+                </li>
+    </div>
+    
+</ul>
+
+<div class="conteudo">
+    <div class="seu_texto">
+        <p id="sp">Seu texto vai ficar aqui!</p>
+    </div>
+    <form action="">
+        <input type="text" class="oi" name="" id="txt"> <br>
+        <input type="submit" id="sub" value="DANCE">
+    </form>
+</div>
+    
+<script>
+
+//barra lateral ------------------------------------------------------------
+
+    let img1 = document.getElementById("img1");
+    let img2 = document.getElementById("img2");
+    let img3 = document.getElementById("img3");
+    let img4 = document.getElementById("img4");
+
+    function muda(nome){
+
+        nome.className = "animated bounce";
+    }
+
+    function tira(nome){
+        nome.className = "none";
+    }
+
+    img1.addEventListener("click",function(){
+        img1.className = "animated bounce";
+        tira(img2);
+        tira(img3);
+        tira(img4);
+
+        
+
+    });
+
+    img2.addEventListener("click",function(){
+        img2.className = "animated bounce";
+        tira(img1);
+        tira(img3);
+        tira(img4);
+
+    });
+
+    img3.addEventListener("click",function(){
+        img3.className = "animated bounce";
+        tira(img1);
+        tira(img2);
+        tira(img4);
+
+    });
+
+    img4.addEventListener("click",function(){
+        img4.className = "animated bounce";
+        tira(img1);
+        tira(img3);
+        tira(img2);
+
+    });
+
+//barra lateral ------------------------------------------------------------
+
+let sub = document.getElementById("sub");
+let text = document.getElementById("txt");
+let span = document.getElementById("sp");
+
+text.onclick = function(){
+    text.className= "animated infinite bounce";
+    sub.className = "none";
+};
+
+text.mouseout = function(){
+    text.className= "none";
+};
+
+let cont = 1;
+
+sub.addEventListener("click", function(){
+    event.preventDefault();
+
+    if(cont==1){
+
+        cont=0;
+    } else{
+
+        span.innerHTML=text.value;
+        span.className="animated infinite swing";
+        text.value = "";
+        text.className = "animated tada";
+        sub.className = "animated rubberBand";
+    }
+
+});
+
+
+
+
+</script>
+</body>
+</html>

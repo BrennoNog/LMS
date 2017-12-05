@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="galeria.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div >
+        <ul class="nav">
+            <a href="galeria.html" class="loja">Loja!</a>
+            <div class="img" id="img">
+
+            </div>
+            
+        </ul>
+
+    </div>
+
+    <div class="conteudo">
+        <div class="produto" id="produto">
+            <input type="text" class="input" id="nome" value="Produto 1" readonly> <br>
+
+            <input type="text" class="input" id="preco" value="120,00" readonly><br>
+
+            <input type="button" class="bu" id="bu1" value="Comprar">
+        </div>
+    </div>
+
+    <div class="conteudo">
+        <div class="produto" id="produto">
+            <input type="text" class="input" id="nome2" value="Produto 2" readonly> <br>
+
+            <input type="text" class="input" id="preco2" value="60,00" readonly><br>
+
+            <input type="button" class="bu" id="bu2" value="Comprar">
+        </div>
+    </div>
+
+    <div class="conteudo">
+        <div class="produto" id="produto">
+            <input type="text" class="input" id="nome3" value="Produto 3" readonly> <br>
+
+            <input type="text" class="input" id="preco3" value="200,00" readonly><br>
+
+            <input type="button" class="bu" id="bu3" value="Comprar">
+        </div>
+    </div>
+    
+    <script src="jquery-3.2.1.min (1).js"></script>
+    <script>
+
+if(localStorage.nome=="undefined" && localStorage.senha=="undefined"){
+
+    $("#img").empty();
+
+    var li = $("<li id='entrar'></li>").text("entrar");
+    var li2 = $("<li id='cadastrar'></li>").text("cadastrar");
+    console.log("oi");
+
+
+
+    var div = $("<div class='dropentra'>Nome: <input type='text' name='' id='nomepessoae'><br>Senha: <input type='text' name='' id='senhae'><br><br><input type='button' value='entrar' id='env'></div>");
+    var div2 = $("<div class='dropcadastra'>Nome: <input type='text' name='' id='nomepessoac'><br>Senha: <input type='text' name='' id='senhac'><br><br><input type='button' value='cadastrar' id='cad'></div>");
+    
+    $("#img").append(li);
+    $("#img").append(li2);
+    $("#img").append(div);
+    $("#img").append(div2);
+
+    let conta = 0;
+    $("#entrar").click(function(){
+        if(conta==0){
+            $(".dropentra").css("display","block");
+            conta=1;
+        }else{
+            $(".dropentra").css("display","none");
+            conta=0;
+        }
+        
+    });
+
+    let conta2 = 0;
+    $("#cadastrar").click(function(){
+        if(conta2==0){
+            $(".dropcadastra").css("display","block");
+            conta2=1;
+        }else{
+            $(".dropcadastra").css("display","none");
+            conta2=0;
+        }
+        
+    });
+}
+
+
+
+//------------------------------------------------------------------
+//cadastrar
+
+    function sair(){
+        localStorage.nome=undefined;
+        localStorage.senha=undefined;
+        setTimeout("location.reload(true);",15);
+    }
+
+
+
+    function gravar(nome,senha){
+                var permitegravar;
+
+        if(localStorage.nome=="undefined" &&  localStorage.senha=="undefined"){
+
+                localStorage.nome = nome;
+                localStorage.senha = senha;
+    }
+    console.log("gravei");
+}
+
+    function olha(nome,data){
+        for(i=0;i<data.length;i++){
+            if(data[i].nome==nome){
+                return false;
+            }
+    }
+        return true;
+    }
+
+    function olhaentra(nome,senha,data){
+        for(i=0;i<data.length;i++){
+            if(data[i].nome==nome && data[i].senha==senha){
+                return true;
+            }
+    }
+        return false;
+    }
+
+    function cadastra(nome,senha){
+        $.ajax({
+                type: 'POST',
+                url: "http://rest.learncode.academy/api/brenno2/users",
+                data:{nome: nome, senha: senha},
+                success:function(data){
+                    console.log("cadastrou");
+                }
+            });
+    }
+
+    function verlocal(){
+        if(localStorage.nome!="undefined"){
+            var div2 = $("<li id='saindo'>sair</li><img id='imag' src='2.png' alt=''><div class='drop' id='drop'><ul id='uldrop'><li>Você ainda não comprou nada! ):</li></ul><a href='compras.html' id='link'>Finalizar compra!</a></div>")
+                $("#img").empty();
+                $("#img").append(div2);
+        }
+
+    }
+
+
+    verlocal();
+
+
+
+
+
+        function add(data){
+            $("#uldrop").empty();
+            
+            for(i=0;i<data.length;i++){
+                var li = $("<li></li>").text(data[i].nome);
+                $("#uldrop").append(li);
+            }
+        }
+
+        function pega(){
+            $.ajax({
+                type: 'GET',
+                url: "http://rest.learncode.academy/api/"+localStorage.nome+"/carro",
+                success:function(data){
+                    console.log("peguei");
+                    add(data);
+
+                }
+
+            });
+        }
+
+        pega();
+
+        function ajax(nome,preco){
+            $.ajax({
+                type: 'POST',
+                url: "http://rest.learncode.academy/api/"+localStorage.nome+"/carro",
+                data:{nome: nome, preco: preco},
+                success:function(data){
+                    console.log("foi");
+                }
+            });
+            pega();
+        }
+
+
+            $("#bu1").click(function(){
+            console.log($("#nome").val() + " - " + $("#preco").val());
+            if(localStorage.nome!=undefined){
+               ajax($("#nome").val(), $("#preco").val());
+            }
+            
+        });
+
+        $("#bu2").click(function(){
+            console.log($("#nome2").val() + " - " + $("#preco2").val());
+            if(localStorage.nome!=undefined){
+               ajax($("#nome2").val(), $("#preco2").val());
+            }
+        });
+
+        $("#bu3").click(function(){
+            console.log($("#nome3").val() + " - " + $("#preco3").val());
+            if(localStorage.nome!=undefined){
+               ajax($("#nome3").val(), $("#preco3").val());
+            }
+        });
+
+        $("#imag").click(function(){
+            console.log("abriu");
+        });
+
+        let cont = 1;
+
+        $("#imag").click(function(){
+            if(cont==1){
+                $("#drop").css("display","block");
+                cont=0;
+            }else{
+                $("#drop").css("display","none");
+                cont=1;
+            }
+            
+        });
+        
+        $("#saindo").click(function(){
+            sair();
+            console.log("saiu");
+        });
+
+        $("#cad").click(function(){
+        $.ajax({
+                type: 'GET',
+                url: "http://rest.learncode.academy/api/brenno2/users",
+                success:function(data){
+                    console.log("peguei");
+                    var n = olha($("#nomepessoac").val(), data);
+                    if(n==true){
+                        console.log("ta ok");
+                        cadastra($("#nomepessoac").val(),$("#senhac").val())
+                    }else{
+                        console.log("já tem");
+                        alert("Usuário já cadastrado!");
+                    }
+
+                }
+
+            });
+
+    });
+        
+
+        
+
+//--------------------------------------------------------------------------------------------------------------------------------
+//entra
+
+$("#env").click(function(){
+    $.ajax({
+        type: 'GET',
+        url: "http://rest.learncode.academy/api/brenno2/users",
+        success:function(data){
+            console.log("peguei");
+            var n = olhaentra($("#nomepessoae").val(),$("#senhae").val(), data);
+            if(n==true){
+                gravar($("#nomepessoae").val(),$("#senhae").val());
+                console.log("ta ok");
+                var div2 = $("<li id='saindo'>sair</li><img id='imag' src='2.png' alt=''><div class='drop' id='drop'><ul id='uldrop'><li>Você ainda não comprou nada! ):</li></ul><a href='compras.html' id='link'>Finalizar compra!</a></div>");
+                $("#img").empty();
+                $("#img").append(div2);
+
+
+            }else{
+                console.log("já tem");
+            }
+
+        }
+
+    });
+
+});
+
+//-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    </script>
+</body>
+</html>

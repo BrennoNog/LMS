@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="galeria2.css">
+</head>
+<body>
+
+        <div>
+                <ul class="nav">
+                    <a href="galeria.html" class="loja">Loja!</a>
+                    <div class="img" id="img">
+                            <li id='saindo'>
+                                sair
+                            </li>
+                            <img id='imag' src='2.png' alt=''>
+                            <div class='drop' id='drop'>
+                                <ul id='uldrop'>
+
+                            </ul>
+                        </div>
+                    </div>
+                                
+                </ul>
+                    
+            </div>
+
+            <div class="cont">
+                    <div class="meio">
+                        <div class="produtos"></div>
+
+
+                    </div>
+                </div>
+
+            <script src="jquery-3.2.1.min (1).js"></script>
+            <script>
+
+
+function sair(){
+        localStorage.nome=undefined;
+        localStorage.senha=undefined;
+        setTimeout("location.reload(true);",15);
+    }
+
+$("#saindo").click(function(){
+            sair();
+            console.log("saiu");
+        });
+
+function add(data){
+
+
+
+        for(i=0;i<data.length;i++){
+            $("#uldrop").empty();
+            var div = $("<div class='compra'></div>");
+            
+            
+            var li = $("<li></li>").text("total: " + data[i].total);
+            var li2 = $("<li></li>").text("Usuário: " + data[i].user);
+            var li3 = $("<li></li>").text("data: " + data[i].datas);
+            div.append(li);
+            div.append(li2);
+            div.append(li3);
+            $(".produtos").append(div);
+        }
+    }
+
+function pega(){
+            $.ajax({
+                type: 'GET',
+                url: "http://rest.learncode.academy/api/"+localStorage.nome+"/compras",
+                success:function(data){
+                    console.log("peguei");
+                    add(data);
+
+                }
+
+            });
+        }
+
+        pega();
+
+        let count = 1;
+
+        $("#imag").click(function(){
+            if(count==1){
+                $("#drop").css("display","block");
+                count=0;
+            }else{
+                $("#drop").css("display","none");
+                count=1;
+            }
+            
+        });
+
+</script>
+    
+</body>
+</html>

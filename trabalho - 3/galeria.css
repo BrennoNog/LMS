@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.nav{
+    list-style-type: none;
+    background-color: green;
+    height: 45px;
+
+}
+
+.nav li{
+    display: inline-block;
+    padding: 10px;
+    padding-top: 3px;
+    cursor: pointer; 
+}
+
+.loja{
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+}
+
+.loja:hover{
+    color: white;
+}
+
+.conteudo{
+    display: inline-block;
+}
+
+.produto{
+    background-color: grey;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: inline-block;
+
+}
+
+#nome{
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+#nome2{
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+#nome3{
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.input{
+    background-color: rgba(255, 0, 0, 0.00);
+    border: none;
+    width: 100px;
+}
+
+.bu{
+    background-color: #4F4F4F;
+    color: white;
+    border:none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.img{
+    top: 0;
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+    
+}
+
+img{
+    width: 40px;
+
+}
+
+.drop{
+    display: none;
+    position: absolute;
+    margin-top: 0px;
+    float: right;
+    background-color: #878787;
+    left: 93vw;
+}
+
+
+
+#uldrop li{
+    display: block;
+}
+
+#uldrop li:hover{
+    background-color: black;
+    color: white;
+}
+
+#link{
+    text-decoration: none;
+    display: block;
+    color: white;
+    background-color: #424242;
+    text-align: center;
+    padding: 10px;
+}
+
+#link:hover{
+    background-color: #BBBBBB;
+    color: black;
+}
+
+#entrar, #cadastrar, #saindo{
+    position: relative;
+    margin-top: 3px;
+    margin-right: 5px; 
+    padding: 10px;
+    background-color: darkgreen;
+    color: white;
+}
+
+.dropentra{
+    background-color: #0A5705;
+    padding: 10px;
+    color: white;
+    display: none;
+}
+
+.dropcadastra{
+    background-color: #0A5705;
+    padding: 10px;
+    color: white;
+    display: none;
+}
+

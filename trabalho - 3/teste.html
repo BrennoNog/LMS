@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    nome: <input type="text" name="" id="nome"> <br>
+    senha: <input type="text" name="" id="senha"> <br>
+    <input type="button" value="entra" id="entra">
+    <input type="button" value="sair" id="sair">
+
+    <script src="login.js"></script>
+    <script>
+    console.log(localStorage.nome + " - " + localStorage.senha);
+
+    let entra = document.getElementById("entra");
+
+    entra.addEventListener("click", function(){
+        let nome = document.getElementById("nome").value;
+        let senha = document.getElementById("senha").value;
+
+        gravar(nome,senha);
+    });
+
+    let sai = document.getElementById("sair");
+
+    sai.addEventListener("click", function(){
+        sair();
+    });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="galeria2.css">
+</head>
+<body>
+
+    <div>
+        <ul class="nav">
+            <a href="galeria.html" class="loja">Loja!</a>
+            <div class="img" id="img">
+                    <li id='saindo'>
+                        sair
+                    </li>
+                    <img id='imag' src='2.png' alt=''>
+                    <div class='drop' id='drop'>
+                        <ul id='uldrop'>
+                            <li>Você ainda não comprou nada! ):
+                        </li>
+                    </ul>
+                    <a id="link" href='suascompras.html'>Suas Compras</a>
+                </div>
+            </div>
+                        
+        </ul>
+            
+    </div>
+
+    <div class="cont">
+        <div class="meio">
+            <div class="produtos"></div>
+            <div class="fim">
+                    <span>Finalizar Compra</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery-3.2.1.min (1).js"></script>
+    <script>
+
+function sair(){
+        localStorage.nome=undefined;
+        localStorage.senha=undefined;
+        setTimeout("location.reload(true);",15);
+    }
+
+$("#saindo").click(function(){
+            sair();
+            console.log("saiu");
+        });
+
+    let cont = 0;
+
+    function add(data){
+
+
+
+        for(i=0;i<data.length;i++){
+            var div = $("<div class='compra'></div>");
+            cont+=parseInt(data[i].preco);
+            
+            
+            var li = $("<li></li>").text(data[i].nome);
+            var li2 = $("<li></li>").text(data[i].preco);
+            div.append(li);
+            div.append(li2);
+            $(".produtos").append(div);
+        }
+        var li = $("<li class='total'></li>").text('Total da compra:'+ cont);
+        $(".produtos").append(li);
+        console.log(cont);
+    }
+
+    function pega(){
+            $.ajax({
+                type: 'GET',
+                url: "http://rest.learncode.academy/api/"+localStorage.nome+"/carro",
+                success:function(data){
+                    console.log("peguei");
+                    add(data);
+
+                }
+
+            });
+        }
+
+
+
+    let count = 1;
+
+        $("#imag").click(function(){
+            if(count==1){
+                $("#drop").css("display","block");
+                count=0;
+            }else{
+                $("#drop").css("display","none");
+                count=1;
+            }
+            
+        });
+
+    $(".fim").click(function(){
+        let hoje = new Date;
+        $.ajax({
+                type: 'POST',
+                url: "http://rest.learncode.academy/api/"+localStorage.nome+"/compras",
+                data:{total: cont, user: localStorage.nome,datas: hoje.getDay() + "/" + hoje.getMonth() + "/" + hoje.getFullYear()},
+                success:function(data){
+                    alert("Compra feita com sucesso!");
+                    }
+            });
+    });
+
+    pega();
+
+
+    </script>
+    
+</body>
+</html>
